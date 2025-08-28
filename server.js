@@ -4,7 +4,7 @@ const createApp = require("./app/createApp");
 const app = createApp();
 const PORT = process.env.PORT || 5000;
 
-if (!process.env.PROD) {
+if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
   });

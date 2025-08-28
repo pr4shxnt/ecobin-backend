@@ -64,7 +64,7 @@ exports.registerTenant = async (req, res) => {
         "tenants/rentalAgreements",
         `${firstName}_${lastName}_${dobString}_rentalAgreement`
       );
-      rentalAgreement = { fileUrl: result.secure_url };
+      rentalAgreement = result.secure_url;
     }
 
     // Upload photoIdentityProof
@@ -75,7 +75,7 @@ exports.registerTenant = async (req, res) => {
         "tenants/photoIDs",
         `${firstName}_${lastName}_${dobString}_photoID`
       );
-      photoIdentityProof = { fileUrl: result.secure_url };
+      photoIdentityProof = result.secure_url;
     }
 
     // save tenant

@@ -219,3 +219,33 @@ exports.getUserDetails = async (req, res) => {
     });
   }
 };
+
+exports.getById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message: "Token is required",
+      });
+    }
+
+    const tenant = await Tenant.findById(id).select("-password");
+    if (!tenant) {
+      return res.status(404).json({
+        success: false,
+        message: "Tenant not found",
+      });
+    }
+    const tenantData = tenant.toObject();
+    delete tenantData.password;
+    res.status(200).json({
+      success: true,
+      data: tenantData,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "internal server error" });
+  }
+};

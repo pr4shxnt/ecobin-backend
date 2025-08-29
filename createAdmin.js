@@ -9,11 +9,12 @@ exports.createAdmin = async () => {
     await connectDB();
 
     // Check if admin already exists
-    const existingAdmin = await Admin.findOne({ username: "admin" });
+    const existingAdmin = await Admin.findOne();
     if (existingAdmin) {
       console.log("Admin user already exists!");
       console.log("Username: admin");
       console.log("Password: admin123");
+      return;
     }
 
     // Hash password

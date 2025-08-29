@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const connectDB = require("./services/connectDataBase");
 const CronService = require("./services/cronService");
 
@@ -16,6 +17,8 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
+
+app.use(cors());
 
 // Health check
 app.get("/health", (_req, res) => {

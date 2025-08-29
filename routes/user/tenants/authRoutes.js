@@ -4,6 +4,7 @@ const {
   registerTenant,
   loginTenant,
   getUserDetails,
+  getById,
 } = require("../../../controller/user/tenant/authController");
 
 const router = express.Router();
@@ -22,5 +23,6 @@ router.get("/profile/:token", getUserDetails);
 
 //Login Route
 router.post("/login", loginTenant);
+router.get("/userinput/:id", getById);
 
 module.exports = router;

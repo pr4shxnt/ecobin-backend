@@ -152,7 +152,7 @@ const adminRegister = async (req, res) => {
 // Get admin profile
 const getAdminProfile = async (req, res) => {
   try {
-    const admin = await Admin.findById(req.admin._id).select("-password");
+    const admin = await Admin.findById(req.body._id).select("-password");
 
     if (!admin) {
       return res.status(404).json({

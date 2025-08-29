@@ -119,7 +119,7 @@ exports.loginTenant = async (req, res) => {
     const { email, password } = req.body;
     console.log(req.body);
     if (!email || !password) {
-      res.status(404).json({ message: "all fields are required" });
+      return res.status(400).json({ message: "all fields are required" });
     }
 
     const tenant = await Tenant.findOne({ emailAddress: email });
